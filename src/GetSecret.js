@@ -17,8 +17,14 @@ class GetSecret extends Component {
 		console.log('Params: ' + JSON.stringify(this.props.params));
         axios
             .get(url)
-            .then(res => this.setState({ message: res.data }))
-            .catch(err => console.log(err))
+            .then(function(res) {
+                console.log('Setting state: ' + JSON.stringify(res));
+				this.setState({ contents: res.data });
+			}.bind(this))
+            .catch(function(err) {
+				console.log(JSON.stringify(err));
+				this.setState({ contents: err.response.data });
+			}.bind(this))
 	}
 
 	render() {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class CreateSecret extends Component {
 	constructor(props) {
@@ -31,7 +32,7 @@ class CreateSecret extends Component {
 				  <input onClick={ this.handleSubmit } type="submit"/>
 				</div>
 				<div>
-                    <p>Generated token: { this.props.token }</p>
+                    <p>Generated token: <Link to={ "/get/" + this.props.token }>{ this.props.token }</Link></p>
 				</div>
 			</div>
 		)
