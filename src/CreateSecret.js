@@ -47,7 +47,7 @@ class CreateSecret extends Component {
 				  <input onClick={ this.handleSubmit } type="submit"/>
 				</div>
 				<div>
-                    <p>Generated token: <Link to={ "/get/" + this.props.token }>{ this.props.token }</Link></p>
+                    <p>Generated token: <a href={"http://dob2-bfs-r5n01.bloomberg.com:3434/secrets/" +  this.props.token }>{ this.props.token }</a></p>
 				</div>
 			</div>
 		)
