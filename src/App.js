@@ -28,7 +28,8 @@ class App extends Component {
           <hr/>
 
           <Route exact path="/" render={(props) => ( <CreateSecret token={this.props.token} onCreateSecret={this.createSecretHandler}/> )}/>
-          <Route path="/get" component={GetSecret}/>
+          <Route path="/get/:token" component={GetSecret}/>
+          <Route path="/get/:token/:password" component={GetSecret}/>
         </div>
       </Router>
     );
