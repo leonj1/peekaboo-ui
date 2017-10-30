@@ -19,7 +19,7 @@ class CreateSecret extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="container">
                 <form>
                   <FormGroup
                     controlId="formBasicText"
