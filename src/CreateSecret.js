@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 class CreateSecret extends Component {
 	constructor(props) {
@@ -19,7 +20,21 @@ class CreateSecret extends Component {
 	render() {
 		return (
 			<div>
-				<textarea value={ this.state.message } onChange={ this.handleMessageChange } rows="10" cols="80"></textarea>
+                <form>
+                  <FormGroup
+                    controlId="formBasicText"
+                  >
+                    <ControlLabel>Working example with validation</ControlLabel>
+                    <FormControl
+                      style={{height: '150px'}}
+                      componentClass="textarea"
+                      height="100"
+                      value={this.state.message}
+                      placeholder="Enter text"
+                      onChange={this.handleMessageChange}
+                    />
+                  </FormGroup>
+                </form>
 				<div>
 					<label>Password to unlock </label>
 					<input value={ this.state.password } onChange={ this.handlePasswordChange } type="password" placeholder="Optional" />
