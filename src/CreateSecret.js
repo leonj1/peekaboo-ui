@@ -20,35 +20,36 @@ class CreateSecret extends Component {
 	render() {
 		return (
 			<div className="container">
-                <form>
-                  <FormGroup
-                    controlId="formBasicText"
-                  >
-                    <ControlLabel>Below text will be temporarily saved as a secret. Just enter text, then click Submit</ControlLabel>
-                    <FormControl
-                      style={{height: '150px'}}
-                      componentClass="textarea"
-                      height="100"
-                      value={this.state.message}
-                      placeholder="Enter text"
-                      onChange={this.handleMessageChange}
-                    />
-                  </FormGroup>
-                </form>
+                		<form>
+                		  <FormGroup
+                		    controlId="formBasicText"
+                		  >
+                		    <ControlLabel>Below text will be temporarily saved as a secret. Just enter text, then click Submit</ControlLabel>
+                		    <FormControl
+                		      style={{height: '150px'}}
+                		      componentClass="textarea"
+                		      height="100"
+                		      value={this.state.message}
+                		      placeholder="Enter text"
+                		      onChange={this.handleMessageChange}
+                		    />
+                		  </FormGroup>
+                		</form>
 				<div>
 					<label>Password to unlock (beta) </label>
 					<input value={ this.state.password } onChange={ this.handlePasswordChange } type="password" placeholder="Optional" />
-                </div>
+                		</div>
 				<div>
 					<label>Expiry (mins) (beta) </label>
 					<input value={ this.state.expiryMinutes } onChange={ this.handleExpiryChange } type="number" ></input>
 				</div>
 				<div>
-				  <input onClick={ this.handleSubmit } type="submit"/>
+					<input onClick={ this.handleSubmit } type="submit"/>
 				</div>
 				<div>
  					<br/>
-                    <p>Generated token: <a href={"http://dob2-bfs-r5n01.dev.bloomberg.com:3434/secrets/" +  this.props.token }>{ this.props.token }</a></p>
+                    			<p>Generated token: <a href={"http://localhost:3434/secrets/" +  this.props.token }>{ this.props.token }</a></p>
+					<p>If password used, just append password at the end durin GET. Example: host/secrets/token/pass</p>
 				</div>
 			</div>
 		)
