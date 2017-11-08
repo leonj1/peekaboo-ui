@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 class CreateSecret extends Component {
