@@ -6,7 +6,7 @@ function* createSecret(action) {
    console.log('SAGA action: ' + JSON.stringify(action));
    try {
       console.log('SAGA: Attempting to call backend');
-      const token = yield call(axios.post, "http://localhost:3434/secrets", action.payload);
+      const token = yield call(axios.post, "https://peekaboo-api.3camels.us/secrets", action.payload);
       console.log('SAGA Returned token: ' + JSON.stringify(token));
       let value = "";
       if (token) {
