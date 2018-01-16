@@ -47,7 +47,7 @@ class CreateSecret extends Component {
 				</div>
 				<div>
  					<br/>
-                    <p>Generated token: <a href={"http://dob2-bfs-r5n01.dev.bloomberg.com:3434/secrets/" +  this.props.token }>{ this.props.token }</a></p>
+                    <p>Generated token: <a href={"https://peekaboo-api.3camels.us/secrets/" +  this.props.token }>{ this.props.token }</a></p>
 				</div>
 			</div>
 		)

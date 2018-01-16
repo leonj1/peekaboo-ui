@@ -12,7 +12,7 @@ class GetSecret extends Component {
 
     componentDidMount() {
 		console.log('In component did mount: ' + JSON.stringify(this.props));
-		let url = "http://dob2-bfs-r5n01.bloomberg.com:3434/secrets/" + this.props.match.params.token;
+		let url = "https://peekaboo-api.3camels.us/secrets/" + this.props.match.params.token;
         console.log('URL: ' + url);
 		console.log('Params: ' + JSON.stringify(this.props.params));
         axios
