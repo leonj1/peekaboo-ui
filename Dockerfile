@@ -1,22 +1,15 @@
-FROM artprod.dev.bloomberg.com/bb/java:20161107_155000
+FROM anapsix/alpine-java
 
-MAINTAINER Jose Leon <jleon43@bloomberg.net>
+MAINTAINER Jose Leon <leonj1@gmail.com>
 
-RUN apt-get update
-RUN apt-get install -y nginx supervisor vim lsof telnet
-RUN apt-get install -y less
+RUN apk update && \
+    apk add bash bash-doc bash-completion mysql-client nginx supervisor vim lsof less
 
 ADD build /var/www/html
 ADD default /etc/nginx/sites-available/default
 ADD supervisord.conf /etc/supervisor/supervisord.conf
 ADD nginx_supervisor.conf /etc/supervisor/conf.d/nginx_supervisor.conf
 ADD peekaboo_api.conf /etc/supervisor/conf.d/peekaboo_api.conf
-ADD peekaboo-1.0-SNAPSHOT.jar /peekaboo.jar
-
-RUN env --unset=http_proxy
-RUN env --unset=https_proxy
-RUN env --unset=HTTP_PROXY
-RUN env --unset=HTTPS_PROXY
 
 ENTRYPOINT ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
 
