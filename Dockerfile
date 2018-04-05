@@ -7,7 +7,7 @@ RUN apk update && \
 
 ADD build /var/www/html
 ADD nginx.conf /etc/nginx.conf
-ADD default /etc/nginx/sites-available/default
+ADD default /etc/nginx/conf.d/default.conf
 ADD supervisord.conf /etc/supervisor/supervisord.conf
 ADD nginx_supervisor.conf /etc/supervisor/conf.d/nginx_supervisor.conf
 
