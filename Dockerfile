@@ -9,7 +9,6 @@ ADD build /var/www/html
 ADD default /etc/nginx/sites-available/default
 ADD supervisord.conf /etc/supervisor/supervisord.conf
 ADD nginx_supervisor.conf /etc/supervisor/conf.d/nginx_supervisor.conf
-ADD peekaboo_api.conf /etc/supervisor/conf.d/peekaboo_api.conf
 
 ENTRYPOINT ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
 
