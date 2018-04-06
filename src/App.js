@@ -8,7 +8,7 @@ import {
 import CreateSecret from './CreateSecret';
 import GetSecret from './GetSecret';
 import { submitSecret } from './redux/actions';
-import { Navbar, NavItem, NavDropdown, MenuItem, Nav } from 'react-bootstrap';
+import { Navbar, NavItem, Nav } from 'react-bootstrap';
 
 class App extends Component {
   constructor(props) {
@@ -28,14 +28,6 @@ class App extends Component {
             </Navbar.Header>
             <Nav>
               <NavItem eventKey={1} href="/">Create Secret</NavItem>
-              <NavItem eventKey={2} href="/get">Get Secret</NavItem>
-              <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-                <MenuItem eventKey={3.1}>Action</MenuItem>
-                <MenuItem eventKey={3.2}>Another action</MenuItem>
-                <MenuItem eventKey={3.3}>Something else here</MenuItem>
-                <MenuItem divider />
-                <MenuItem eventKey={3.4}>Separated link</MenuItem>
-              </NavDropdown>
             </Nav>
           </Navbar>
 
@@ -57,7 +49,7 @@ const mapStateToProps = state => {
 		secret: state.secret,
 		token: state.token
 	}
-}
+};
 
 const mapDispatchToProps = dispatch => {
 	return {
@@ -65,7 +57,7 @@ const mapDispatchToProps = dispatch => {
 			dispatch(submitSecret(secret));
 		}
 	}
-}
+};
 
 const ReduxApp = connect(
 	mapStateToProps,
