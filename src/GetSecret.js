@@ -12,7 +12,7 @@ class GetSecret extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	showContents() {
+    showContents() {
 	    if(this.props.contents) {
 	        return (
                 <div className="GetSecret-Contents">
@@ -27,8 +27,23 @@ class GetSecret extends Component {
         }
     }
 
-	render() {
+    showProblems() {
+	    if(this.props.request.status && this.props.request.status !== 200) {
+	        return (
+                <div className="GetSecret-Problem">
+                    <div>
+                        <label>Problem</label>
+                    </div>
+                    <div className="GetSecret-white-space-pre">
+                        <p>{ this.props.request.status }</p>
+                        <p>{ this.props.request.reason }</p>
+                    </div>
+                </div>
+            )
+        }
+    }
 
+	render() {
 		return (
 	        <div className="container">
 				<div>
@@ -41,6 +56,7 @@ class GetSecret extends Component {
 					<input onClick={ this.handleSubmit } type="submit" value="Get Contents" className="GetSecret-Button"/>
 				</div>
                 {this.showContents()}
+                {this.showProblems()}
 	        </div>
 		)
 	}
