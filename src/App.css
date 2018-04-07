@@ -1,5 +1,6 @@
 .Root_Div {
     background-color: #ecd1f7;
+    height: 100vh;
 }
 
 .App {
@@ -60,7 +61,7 @@
     font-size: 2rem;
     height: 3.6rem;
     line-height: 3.6rem;
-    margin: 0 5px;
+    margin: 5px 5px 0px 5px;
     position: relative;
     text-align: center;
     -webkit-user-select: none;
@@ -108,7 +109,7 @@
     font-size: 2rem;
     height: 3.6rem;
     line-height: 3.6rem;
-    margin: 0 5px;
+    margin: 5px 5px 0px 5px;
     position: relative;
     text-align: center;
     -webkit-user-select: none;
@@ -121,4 +122,10 @@
     background-color: #daa6f0;
     padding: 20px;
     margin-top: 10px;
+}
+
+.CreateSecret_Usage-Message {
+    background-color: #eeeff0;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
 }
