@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 class CreateSecret extends Component {
 	constructor(props) {
@@ -9,12 +10,34 @@ class CreateSecret extends Component {
 			message: "",
 			expiryMinutes: 60,
 			password: ""
-		}
+		};
 		this.handleMessageChange = this.handleMessageChange.bind(this);
 		this.handlePasswordChange = this.handlePasswordChange.bind(this);
 		this.handleExpiryChange = this.handleExpiryChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
+
+	renderGeneratedToken() {
+        if (this.props.token) {
+            return (
+                <div>
+                    <table>
+                        <tr>
+                            <td>Generated token:</td>
+                            <td>
+                                <span className="CreateSecret-Token">{ this.props.token }</span>
+                            </td>
+                            <td>
+                                <CopyToClipboard text={this.props.token} onCopy={this.onCopy}>
+                                    <button>Copy to clipboard</button>
+                                </CopyToClipboard>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            )
+        }
+    }
 
 	render() {
 		return (
@@ -37,34 +60,30 @@ class CreateSecret extends Component {
 				<div>
 					<label>Password to unlock (beta) </label>
 					<input value={ this.state.password } onChange={ this.handlePasswordChange } type="password" placeholder="Optional" />
-                		</div>
+				</div>
 				<div>
 					<label>Expiry (mins) (beta) </label>
-					<input value={ this.state.expiryMinutes } onChange={ this.handleExpiryChange } type="number" ></input>
+					<input value={ this.state.expiryMinutes } onChange={ this.handleExpiryChange } type="number" />
 				</div>
 				<div>
 					<input onClick={ this.handleSubmit } type="submit"/>
 				</div>
-				<div>
- 					<br/>
-                    <p>Generated token: <a href={"https://peekaboo-api.3camels.us/secrets/" +  this.props.token }>{ this.props.token }</a></p>
-					<p>If password used, just append password at the end durin GET. Example: host/secrets/token/pass</p>
-				</div>
+                {this.renderGeneratedToken()}
 			</div>
 		)
 	}
 
     handleMessageChange = event => {
 		this.setState({ message: event.target.value });
-    }
+    };
 
     handleExpiryChange = event => {
 		this.setState({ expiryMinutes: event.target.value });
-    }
+    };
 
 	handlePasswordChange = event => {
 		this.setState({ password: event.target.value });
-	}
+	};
 
 	handleSubmit = function(e) {
         console.log("handing submit");
@@ -75,7 +94,7 @@ class CreateSecret extends Component {
 
 CreateSecret.propTypes = {
 	onCreateSecret: PropTypes.func
-}
+};
 
 export default CreateSecret;
 

@@ -1,48 +1,69 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
 class GetSecret extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			token: "",
 			contents: ""
-		}
+		};
+        this.handleMessageChange = this.handleMessageChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-    componentDidMount() {
-		console.log('In component did mount: ' + JSON.stringify(this.props));
-		let url = "https://peekaboo-api.3camels.us/secrets/" + this.props.match.params.token;
-        console.log('URL: ' + url);
-		console.log('Params: ' + JSON.stringify(this.props.params));
-        axios
-            .get(url)
-            .then(function(res) {
-                console.log('Setting state: ' + JSON.stringify(res));
-				this.setState({ contents: res.data });
-			}.bind(this))
-            .catch(function(err) {
-				console.log(JSON.stringify(err));
-				this.setState({ contents: err.response.data });
-			}.bind(this))
-	}
+	showContents() {
+	    if(this.props.contents) {
+	        return (
+                <div>
+                    <div>
+                        <label>Message contents</label>
+                    </div>
+                    <div>
+                        <p>{ this.props.contents }</p>
+                    </div>
+                </div>
+            )
+        }
+    }
 
 	render() {
 
 		return (
-	        <div>
-	        	<label>Message contents</label>
-	        	<p>{ this.state.contents }</p>
+	        <div className="container">
+				<div>
+					<label>TOKEN</label>
+				</div>
+				<div>
+					<input type="text" className="GetToken-InputBox" onChange={this.handleMessageChange} value={ this.state.password }/>
+				</div>
+				<div>
+					<input onClick={ this.handleSubmit } type="submit"/>
+				</div>
+                {this.showContents()}
 	        </div>
 		)
 	}
+
+    handleMessageChange = event => {
+        this.setState({ token: event.target.value });
+    };
+
+    handleSubmit = function(e) {
+        console.log("fetching token " + this.state.token);
+        this.props.onFetchToken && this.props.onFetchToken(this.state.token);
+        e.preventDefault();
+    }
 }
 
 GetSecret.propTypes = {
-	params: PropTypes.shape ({
-		token: PropTypes.string.isRequired
+	onFetchToken: PropTypes.func.isRequired,
+    contents: PropTypes.string.isRequired,
+	request: PropTypes.shape({
+		status: PropTypes.number.isRequired,
+		reason: PropTypes.string.isRequired
 	})
-}
+};
 
 export default GetSecret;
 
