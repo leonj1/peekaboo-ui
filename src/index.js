@@ -54,6 +54,11 @@ const myReducer = (state = initialState, action) => {
 			return {
 				...state,
 				token: action.token,
+                secret: {
+                    message: "",
+                    expiryMinutes: 60,
+                    password: ""
+                }
 			};
 		case START_FETCH_SECRET:
             return {

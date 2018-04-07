@@ -12,6 +12,21 @@ class GetSecret extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+	showContents() {
+	    if(this.props.contents) {
+	        return (
+                <div>
+                    <div>
+                        <label>Message contents</label>
+                    </div>
+                    <div>
+                        <p>{ this.props.contents }</p>
+                    </div>
+                </div>
+            )
+        }
+    }
+
 	render() {
 
 		return (
@@ -25,16 +40,7 @@ class GetSecret extends Component {
 				<div>
 					<input onClick={ this.handleSubmit } type="submit"/>
 				</div>
-
-				<br/>
-				<div>
-					<div>
-						<label>Message contents</label>
-					</div>
-					<div>
-						<p>{ this.props.contents }</p>
-					</div>
-				</div>
+                {this.showContents()}
 	        </div>
 		)
 	}

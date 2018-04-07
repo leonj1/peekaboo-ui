@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 class CreateSecret extends Component {
 	constructor(props) {
@@ -15,6 +16,28 @@ class CreateSecret extends Component {
 		this.handleExpiryChange = this.handleExpiryChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
+
+	renderGeneratedToken() {
+        if (this.props.token) {
+            return (
+                <div>
+                    <table>
+                        <tr>
+                            <td>Generated token:</td>
+                            <td>
+                                <span className="CreateSecret-Token">{ this.props.token }</span>
+                            </td>
+                            <td>
+                                <CopyToClipboard text={this.props.token} onCopy={this.onCopy}>
+                                    <button>Copy to clipboard</button>
+                                </CopyToClipboard>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            )
+        }
+    }
 
 	render() {
 		return (
@@ -45,17 +68,7 @@ class CreateSecret extends Component {
 				<div>
 					<input onClick={ this.handleSubmit } type="submit"/>
 				</div>
-				<div>
- 					<br/>
-                    <table>
-                        <tr>
-                            <td>Generated token:</td>
-                            <td>
-                                <span className="CreateSecret-Token">{ this.props.token }</span>
-                            </td>
-                        </tr>
-                    </table>
-				</div>
+                {this.renderGeneratedToken()}
 			</div>
 		)
 	}
