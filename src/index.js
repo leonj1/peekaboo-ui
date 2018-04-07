@@ -69,6 +69,11 @@ const myReducer = (state = initialState, action) => {
             return {
                 ...state,
                 request: action.request,
+                secret: {
+                    message: "",
+                    expiryMinutes: 60,
+                    password: ""
+                }
             };
 		case SUCCESS_FETCH_SECRET:
             console.log('Reducer: Contents being saved to state: ' + JSON.stringify(action.payload));
