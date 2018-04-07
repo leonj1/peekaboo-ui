@@ -8,7 +8,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { START_CREATE_SECRET, FAILED_CREATE_SECRET, SUCCESS_CREATE_SECRET, START_FETCH_SECRET, FAILED_FETCH_SECRET, SUCCESS_FETCH_SECRET } from './redux/actions';
 import createSagaMiddleware from 'redux-saga';
-import mySaga from './sagas/createSecret';
+import rootSaga from './sagas/apiSaga';
 
 const initialState = {
 	secret: {
@@ -16,8 +16,12 @@ const initialState = {
 		expiryMinutes: 60,
 		password: ""
 	},
-	token: ""
-}
+	token: "",
+	request: {
+		status: 200,
+		reason: ""
+	}
+};
 
 // reducers
 function startCreatingSecret(action) {
@@ -26,6 +30,10 @@ function startCreatingSecret(action) {
 }
 function failedCreatingSecret(action) {
 	return action.payload;
+}
+function startFetchingSecret(action) {
+    console.log('actionCreator: startFetchingSecret: ' + JSON.stringify(action));
+    return action.token;
 }
 
 // Actions the store should perform when an action is received
@@ -48,12 +56,28 @@ const myReducer = (state = initialState, action) => {
 				token: action.token,
 			};
 		case START_FETCH_SECRET:
+            return {
+                ...state,
+                token: startFetchingSecret(action),
+            };
 		case FAILED_FETCH_SECRET:
+            return {
+                ...state,
+                request: action.request,
+            };
 		case SUCCESS_FETCH_SECRET:
+            console.log('Reducer: Contents being saved to state: ' + JSON.stringify(action.payload));
+            return {
+                ...state,
+                secret: {
+                    message: action.payload.contents
+                },
+                request: action.payload.request
+            };
 		default:
 			return state;
 	}
-}
+};
 
 const sagaMiddleware = createSagaMiddleware();
 const middleware = [
@@ -70,7 +94,7 @@ const store = createStore(
   enhancer
 );
 
-sagaMiddleware.run(mySaga);
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -80,4 +104,3 @@ ReactDOM.render(
 );
 
 registerServiceWorker();
-

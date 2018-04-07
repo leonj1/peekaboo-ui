@@ -9,7 +9,7 @@ class CreateSecret extends Component {
 			message: "",
 			expiryMinutes: 60,
 			password: ""
-		}
+		};
 		this.handleMessageChange = this.handleMessageChange.bind(this);
 		this.handlePasswordChange = this.handlePasswordChange.bind(this);
 		this.handleExpiryChange = this.handleExpiryChange.bind(this);
@@ -37,10 +37,10 @@ class CreateSecret extends Component {
 				<div>
 					<label>Password to unlock (beta) </label>
 					<input value={ this.state.password } onChange={ this.handlePasswordChange } type="password" placeholder="Optional" />
-                		</div>
+				</div>
 				<div>
 					<label>Expiry (mins) (beta) </label>
-					<input value={ this.state.expiryMinutes } onChange={ this.handleExpiryChange } type="number" ></input>
+					<input value={ this.state.expiryMinutes } onChange={ this.handleExpiryChange } type="number" />
 				</div>
 				<div>
 					<input onClick={ this.handleSubmit } type="submit"/>
@@ -48,7 +48,7 @@ class CreateSecret extends Component {
 				<div>
  					<br/>
                     <p>Generated token: <a href={"https://peekaboo-api.3camels.us/secrets/" +  this.props.token }>{ this.props.token }</a></p>
-					<p>If password used, just append password at the end durin GET. Example: host/secrets/token/pass</p>
+					<p>If password used, just append password at the end during GET. Example: host/secrets/token/pass</p>
 				</div>
 			</div>
 		)
@@ -56,15 +56,15 @@ class CreateSecret extends Component {
 
     handleMessageChange = event => {
 		this.setState({ message: event.target.value });
-    }
+    };
 
     handleExpiryChange = event => {
 		this.setState({ expiryMinutes: event.target.value });
-    }
+    };
 
 	handlePasswordChange = event => {
 		this.setState({ password: event.target.value });
-	}
+	};
 
 	handleSubmit = function(e) {
         console.log("handing submit");
@@ -75,7 +75,7 @@ class CreateSecret extends Component {
 
 CreateSecret.propTypes = {
 	onCreateSecret: PropTypes.func
-}
+};
 
 export default CreateSecret;
 

@@ -12,3 +12,9 @@ export function submitSecret(secret) {
 	}
 }
 
+export function fetchSecret(token) {
+	return {
+		type: START_FETCH_SECRET,
+		payload: token
+	}
+}
