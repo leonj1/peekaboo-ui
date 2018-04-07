@@ -67,7 +67,7 @@ class CreateSecret extends Component {
                   <FormGroup
                     controlId="formBasicText"
                   >
-                    <ControlLabel>Below text will be temporarily saved as a secret. Just enter text, then click Submit</ControlLabel>
+                    <ControlLabel>Below text will be temporarily saved as a secret. Just enter text, then click Generate</ControlLabel>
                     <FormControl
                       style={{height: '150px'}}
                       componentClass="textarea"
