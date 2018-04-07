@@ -17,6 +17,18 @@ class CreateSecret extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+	renderPasswordPrompt(){
+	    // disabling until GetSecret supports prompting user
+	    if(true === false) {
+	        return (
+                <div>
+                    <label>Password to unlock (beta) </label>
+                    <input value={ this.state.password } onChange={ this.handlePasswordChange } type="password" placeholder="Optional" />
+                </div>
+            )
+        }
+    }
+
 	renderGeneratedToken() {
         if (this.props.token) {
             return (
@@ -42,25 +54,22 @@ class CreateSecret extends Component {
 	render() {
 		return (
 			<div className="container">
-                		<form>
-                		  <FormGroup
-                		    controlId="formBasicText"
-                		  >
-                		    <ControlLabel>Below text will be temporarily saved as a secret. Just enter text, then click Submit</ControlLabel>
-                		    <FormControl
-                		      style={{height: '150px'}}
-                		      componentClass="textarea"
-                		      height="100"
-                		      value={this.state.message}
-                		      placeholder="Enter text"
-                		      onChange={this.handleMessageChange}
-                		    />
-                		  </FormGroup>
-                		</form>
-				<div>
-					<label>Password to unlock (beta) </label>
-					<input value={ this.state.password } onChange={ this.handlePasswordChange } type="password" placeholder="Optional" />
-				</div>
+                <form>
+                  <FormGroup
+                    controlId="formBasicText"
+                  >
+                    <ControlLabel>Below text will be temporarily saved as a secret. Just enter text, then click Submit</ControlLabel>
+                    <FormControl
+                      style={{height: '150px'}}
+                      componentClass="textarea"
+                      height="100"
+                      value={this.state.message}
+                      placeholder="Enter text"
+                      onChange={this.handleMessageChange}
+                    />
+                  </FormGroup>
+                </form>
+                {this.renderPasswordPrompt()}
 				<div>
 					<label>Expiry (mins) (beta) </label>
 					<input value={ this.state.expiryMinutes } onChange={ this.handleExpiryChange } type="number" />
