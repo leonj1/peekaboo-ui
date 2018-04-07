@@ -75,7 +75,7 @@ class CreateSecret extends Component {
 					<input value={ this.state.expiryMinutes } onChange={ this.handleExpiryChange } type="number" />
 				</div>
 				<div>
-					<input onClick={ this.handleSubmit } type="submit"/>
+					<input onClick={ this.handleSubmit } type="submit" value="Generate Secret Token"/>
 				</div>
                 {this.renderGeneratedToken()}
 			</div>
