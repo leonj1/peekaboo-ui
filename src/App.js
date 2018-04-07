@@ -25,7 +25,7 @@ class App extends Component {
           <Navbar>
             <Navbar.Header>
               <Navbar.Brand>
-                <a href="#">Peekaboo</a>
+                <a href="#">NotePlum</a>
               </Navbar.Brand>
             </Navbar.Header>
             <Nav>
