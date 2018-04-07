@@ -47,8 +47,14 @@ class CreateSecret extends Component {
 				</div>
 				<div>
  					<br/>
-                    <p>Generated token: <a href={"https://peekaboo-api.3camels.us/secrets/" +  this.props.token }>{ this.props.token }</a></p>
-					<p>If password used, just append password at the end during GET. Example: host/secrets/token/pass</p>
+                    <table>
+                        <tr>
+                            <td>Generated token:</td>
+                            <td>
+                                <span className="CreateSecret-Token">{ this.props.token }</span>
+                            </td>
+                        </tr>
+                    </table>
 				</div>
 			</div>
 		)

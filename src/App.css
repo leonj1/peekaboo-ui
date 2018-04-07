@@ -26,3 +26,11 @@
 .navbar-nav {
   display: inline;
 }
+
+.GetToken-InputBox {
+  min-width: 275px;
+}
+
+.CreateSecret-Token {
+    font-weight: 900;
+}
