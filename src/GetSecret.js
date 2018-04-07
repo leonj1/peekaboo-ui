@@ -38,7 +38,7 @@ class GetSecret extends Component {
 					<input type="text" className="GetToken-InputBox" onChange={this.handleMessageChange} value={ this.state.password }/>
 				</div>
 				<div>
-					<input onClick={ this.handleSubmit } type="submit"/>
+					<input onClick={ this.handleSubmit } type="submit" value="Get Contents"/>
 				</div>
                 {this.showContents()}
 	        </div>
