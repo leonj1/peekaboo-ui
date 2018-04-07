@@ -1,43 +1,120 @@
+.Root_Div {
+    background-color: #ecd1f7;
+}
+
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+    /*animation: App-logo-spin infinite 20s linear;*/
+    height: 80px;
+    color: #a324d9 !important;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
 }
 
 .App-intro {
-  font-size: large;
+    font-size: large;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.navbar-default .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /*justify-content: flex-start;*/
 }
 
 .navbar-nav {
-  display: inline;
+    display: inline;
 }
 
+/* GET SECRET PAGE */
 .GetToken-InputBox {
-  min-width: 275px;
+    min-width: 275px;
 }
 
+.GetSecret-white-space-pre {
+    white-space: pre-wrap;
+}
+
+.GetSecret-Button {
+    background-color: white;
+    border-radius: 3.6rem;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 2rem;
+    height: 3.6rem;
+    line-height: 3.6rem;
+    margin: 0 5px;
+    position: relative;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /*width: 3.6rem;*/
+}
+
+.GetSecret-Contents {
+    background-color: #daa6f0;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+/* CREATE SECRET PAGE */
 .CreateSecret-Token {
     font-weight: 900;
     margin-bottom: 10px;
 }
 
-.GetSecret-white-space-pre {
-    white-space: pre-wrap;
+.CreateSecret-Button {
+    background-color: white;
+    border-radius: 3.6rem;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 2rem;
+    height: 3.6rem;
+    line-height: 3.6rem;
+    margin: 0 5px;
+    position: relative;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /*width: 3.6rem;*/
+}
+
+.CreateSecret-CopyToClipBoard_Button {
+    background-color: white;
+    border-radius: 3.6rem;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 2rem;
+    height: 3.6rem;
+    line-height: 3.6rem;
+    margin: 0 5px;
+    position: relative;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .CreateSecret_TokenGenerated-Message {

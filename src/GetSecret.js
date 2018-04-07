@@ -15,7 +15,7 @@ class GetSecret extends Component {
 	showContents() {
 	    if(this.props.contents) {
 	        return (
-                <div>
+                <div className="GetSecret-Contents">
                     <div>
                         <label>Message contents</label>
                     </div>
@@ -38,7 +38,7 @@ class GetSecret extends Component {
 					<input type="text" className="GetToken-InputBox" onChange={this.handleMessageChange} value={ this.state.password }/>
 				</div>
 				<div>
-					<input onClick={ this.handleSubmit } type="submit" value="Get Contents"/>
+					<input onClick={ this.handleSubmit } type="submit" value="Get Contents" className="GetSecret-Button"/>
 				</div>
                 {this.showContents()}
 	        </div>

@@ -25,7 +25,7 @@ class App extends Component {
           <Navbar>
             <Navbar.Header>
               <Navbar.Brand>
-                <Link to="/">NotePlum</Link>
+                <Link to="/" className="App-logo">NotePlum</Link>
               </Navbar.Brand>
             </Navbar.Header>
             <Nav>

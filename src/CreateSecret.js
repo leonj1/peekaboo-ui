@@ -40,7 +40,7 @@ class CreateSecret extends Component {
                         { this.props.token }
                     </div>
                     <div>
-                        <CopyToClipboard text={this.props.token} onCopy={this.onCopy}>
+                        <CopyToClipboard text={this.props.token} onCopy={this.onCopy} className="CreateSecret-CopyToClipBoard_Button">
                             <button>Copy to clipboard</button>
                         </CopyToClipboard>
                     </div>
@@ -73,7 +73,7 @@ class CreateSecret extends Component {
 					<input value={ this.state.expiryMinutes } onChange={ this.handleExpiryChange } type="number" />
 				</div>
 				<div>
-					<input onClick={ this.handleSubmit } type="submit" value="Generate Secret Token"/>
+					<input onClick={ this.handleSubmit } type="submit" value="Generate Secret Token" className="CreateSecret-Button"/>
 				</div>
                 {this.renderGeneratedToken()}
 			</div>
