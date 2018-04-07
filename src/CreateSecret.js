@@ -22,7 +22,7 @@ class CreateSecret extends Component {
 	    if(true === false) {
 	        return (
                 <div>
-                    <label>Password to unlock (beta) </label>
+                    <label>Password to unlock </label>
                     <input value={ this.state.password } onChange={ this.handlePasswordChange } type="password" placeholder="Optional" />
                 </div>
             )
@@ -32,20 +32,18 @@ class CreateSecret extends Component {
 	renderGeneratedToken() {
         if (this.props.token) {
             return (
-                <div>
-                    <table>
-                        <tr>
-                            <td>Generated token:</td>
-                            <td>
-                                <span className="CreateSecret-Token">{ this.props.token }</span>
-                            </td>
-                            <td>
-                                <CopyToClipboard text={this.props.token} onCopy={this.onCopy}>
-                                    <button>Copy to clipboard</button>
-                                </CopyToClipboard>
-                            </td>
-                        </tr>
-                    </table>
+                <div className="CreateSecret_TokenGenerated-Message">
+                    <div>
+                        <p>This token is what you hand out for someone to reclaim on this site.</p>
+                    </div>
+                    <div className="CreateSecret-Token">
+                        { this.props.token }
+                    </div>
+                    <div>
+                        <CopyToClipboard text={this.props.token} onCopy={this.onCopy}>
+                            <button>Copy to clipboard</button>
+                        </CopyToClipboard>
+                    </div>
                 </div>
             )
         }
@@ -71,7 +69,7 @@ class CreateSecret extends Component {
                 </form>
                 {this.renderPasswordPrompt()}
 				<div>
-					<label>Expiry (mins) (beta) </label>
+					<label>Expiry (mins) </label>
 					<input value={ this.state.expiryMinutes } onChange={ this.handleExpiryChange } type="number" />
 				</div>
 				<div>

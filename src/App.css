@@ -33,8 +33,15 @@
 
 .CreateSecret-Token {
     font-weight: 900;
+    margin-bottom: 10px;
 }
 
 .GetSecret-white-space-pre {
     white-space: pre-wrap;
+}
+
+.CreateSecret_TokenGenerated-Message {
+    background-color: #daa6f0;
+    padding: 20px;
+    margin-top: 10px;
 }
