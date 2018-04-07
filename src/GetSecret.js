@@ -19,7 +19,7 @@ class GetSecret extends Component {
                     <div>
                         <label>Message contents</label>
                     </div>
-                    <div>
+                    <div className="GetSecret-white-space-pre">
                         <p>{ this.props.contents }</p>
                     </div>
                 </div>

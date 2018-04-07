@@ -34,3 +34,7 @@
 .CreateSecret-Token {
     font-weight: 900;
 }
+
+.GetSecret-white-space-pre {
+    white-space: pre-wrap;
+}
