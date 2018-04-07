@@ -49,6 +49,17 @@ class CreateSecret extends Component {
         }
     }
 
+    renderUsage() {
+        if (!this.props.token) {
+            return (
+                <div className="CreateSecret_Usage-Message">
+                    <p>Like Mission Impossible, this message self-destructs in the time you specify.</p>
+                    <p>It can only ever be viewed once!</p>
+                </div>
+            )
+        }
+    }
+
 	render() {
 		return (
 			<div className="container">
@@ -76,6 +87,7 @@ class CreateSecret extends Component {
 					<input onClick={ this.handleSubmit } type="submit" value="Generate Secret Token" className="CreateSecret-Button"/>
 				</div>
                 {this.renderGeneratedToken()}
+                {this.renderUsage()}
 			</div>
 		)
 	}
