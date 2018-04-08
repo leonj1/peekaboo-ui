@@ -18,7 +18,6 @@ class CreateSecret extends Component {
 	}
 
     componentWillMount() {
-	    console.log("CreateSecret componentWillReceiveProps");
         this.props.onInitialization();
     }
 
@@ -110,7 +109,6 @@ class CreateSecret extends Component {
 	};
 
 	handleSubmit = function(e) {
-        console.log("handing submit");
 	    this.props.onCreateSecret && this.props.onCreateSecret(this.state);
         e.preventDefault();
 	}

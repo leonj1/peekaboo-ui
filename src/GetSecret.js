@@ -66,7 +66,6 @@ class GetSecret extends Component {
     };
 
     handleSubmit = function(e) {
-        console.log("fetching token " + this.state.token);
         this.props.onFetchToken && this.props.onFetchToken(this.state.token);
         e.preventDefault();
     }

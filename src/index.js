@@ -25,14 +25,12 @@ const initialState = {
 
 // reducers
 function startCreatingSecret(action) {
-    console.log('actionCreator: startCreatingSecret: ' + JSON.stringify(action));
 	return action.payload;
 }
 function failedCreatingSecret(action) {
 	return action.payload;
 }
 function startFetchingSecret(action) {
-    console.log('actionCreator: startFetchingSecret: ' + JSON.stringify(action));
     return action.token;
 }
 
@@ -50,7 +48,6 @@ const myReducer = (state = initialState, action) => {
 				secret: failedCreatingSecret(action),
 			};
 		case SUCCESS_CREATE_SECRET:
-            console.log('Reducer: Token being saved to state: ' + JSON.stringify(action.token));
 			return {
 				...state,
 				token: action.token,
@@ -76,7 +73,6 @@ const myReducer = (state = initialState, action) => {
                 }
             };
 		case SUCCESS_FETCH_SECRET:
-            console.log('Reducer: Contents being saved to state: ' + JSON.stringify(action.payload));
             return {
                 ...state,
                 secret: {
@@ -85,7 +81,6 @@ const myReducer = (state = initialState, action) => {
                 request: action.payload.request
             };
         case CLEAR_PREVIOUS_REQUEST:
-            console.log('Clearing previous request');
             return {
                 ...state,
                 request: action.payload
