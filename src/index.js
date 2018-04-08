@@ -6,7 +6,7 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { START_CREATE_SECRET, FAILED_CREATE_SECRET, SUCCESS_CREATE_SECRET, START_FETCH_SECRET, FAILED_FETCH_SECRET, SUCCESS_FETCH_SECRET } from './redux/actions';
+import { START_CREATE_SECRET, FAILED_CREATE_SECRET, SUCCESS_CREATE_SECRET, START_FETCH_SECRET, FAILED_FETCH_SECRET, SUCCESS_FETCH_SECRET, CLEAR_PREVIOUS_REQUEST } from './redux/actions';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './sagas/apiSaga';
 
@@ -83,6 +83,12 @@ const myReducer = (state = initialState, action) => {
                     message: action.payload.contents
                 },
                 request: action.payload.request
+            };
+        case CLEAR_PREVIOUS_REQUEST:
+            console.log('Clearing previous request');
+            return {
+                ...state,
+                request: action.payload
             };
 		default:
 			return state;

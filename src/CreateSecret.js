@@ -17,6 +17,11 @@ class CreateSecret extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+    componentWillMount() {
+	    console.log("CreateSecret componentWillReceiveProps");
+        this.props.onInitialization();
+    }
+
 	renderPasswordPrompt(){
 	    // disabling until GetSecret supports prompting user
 	    if(true === false) {
@@ -112,7 +117,8 @@ class CreateSecret extends Component {
 }
 
 CreateSecret.propTypes = {
-	onCreateSecret: PropTypes.func
+	onCreateSecret: PropTypes.func.isRequired,
+    onInitialization: PropTypes.func.isRequired
 };
 
 export default CreateSecret;
