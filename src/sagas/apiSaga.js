@@ -4,11 +4,8 @@ import { START_CREATE_SECRET, START_FETCH_SECRET, SUCCESS_CREATE_SECRET, FAILED_
 
 // worker Saga: will be fired on START_CREATE_SECRET actions
 function* createSecret(action) {
-   console.log('SAGA action: ' + JSON.stringify(action));
    try {
-      console.log('SAGA: Attempting to call backend');
       const token = yield call(axios.post, "https://peekaboo-api.3camels.us/secrets", action.payload);
-      console.log('SAGA Returned token: ' + JSON.stringify(token));
       let value = "";
       if (token) {
           value = token.data;
@@ -21,11 +18,8 @@ function* createSecret(action) {
 
 // worker Saga: will be fired on START_FETCH_SECRET actions
 function* fetchSecret(action) {
-   console.log('SAGA action: ' + JSON.stringify(action));
    try {
-      console.log('SAGA: Attempting to call backend');
       const contents = yield call(axios.get, "https://peekaboo-api.3camels.us/secrets/" + action.payload);
-      console.log('SAGA Returned contents: ' + JSON.stringify(contents));
       let value = "";
       if (contents) {
           value = contents.data;
@@ -41,7 +35,6 @@ function* fetchSecret(action) {
           }
       });
    } catch (e) {
-       console.log('SAGA Fetch Secret Failed: ' + JSON.stringify(e));
       yield put({
           type: FAILED_FETCH_SECRET,
           request: {

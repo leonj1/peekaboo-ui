@@ -47,17 +47,14 @@ class App extends Component {
   }
 
   createSecretHandler = secret => {
-    console.log('In parent submitting secret');
   	this.props.createSecretProp(secret);
   };
 
   fetchSecret = token => {
-    console.log('In parent fetching secret');
   	this.props.fetchSecretProp(token);
   };
 
   clearRequest = () => {
-      console.log("Clearing previous request status");
       this.props.clearPastRequest();
   }
 }
