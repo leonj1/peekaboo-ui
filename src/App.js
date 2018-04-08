@@ -31,10 +31,10 @@ class App extends Component {
             </Navbar.Header>
             <Nav>
               <NavItem eventKey={1} href="/">
-                  <Link to="/">Create Secret</Link>
+                  <Link to="/" className="NavBar-Item">Create Secret</Link>
               </NavItem>
               <NavItem eventKey={2} href="/get/">
-                  <Link to="get">Get Secret</Link>
+                  <Link to="get" className="NavBar-Item">Get Secret</Link>
               </NavItem>
             </Nav>
           </Navbar>
