@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import CreateSecret from './CreateSecret';
 import GetSecret from './GetSecret';
-import { submitSecret, fetchSecret } from './redux/actions';
+import { submitSecret, fetchSecret, clearPastRequest } from './redux/actions';
 import { Navbar, NavItem, Nav } from 'react-bootstrap';
 
 class App extends Component {
@@ -16,6 +16,7 @@ class App extends Component {
 	super(props);
 	this.createSecretHandler = this.createSecretHandler.bind(this);
 	this.fetchSecret = this.fetchSecret.bind(this);
+	this.clearRequest = this.clearRequest.bind(this);
   }
 
   render() {
@@ -38,7 +39,7 @@ class App extends Component {
             </Nav>
           </Navbar>
 
-          <Route exact path="/" render={(props) => ( <CreateSecret token={this.props.token} onCreateSecret={this.createSecretHandler}/> )}/>
+          <Route exact path="/" render={(props) => ( <CreateSecret token={this.props.token} onCreateSecret={this.createSecretHandler} onInitialization={this.clearRequest}/> )}/>
           <Route path="/get/" render={(props) => (<GetSecret request={this.props.request} contents={this.props.secret.message} onFetchToken={this.fetchSecret}/> )}/>
         </div>
       </Router>
@@ -53,6 +54,11 @@ class App extends Component {
   fetchSecret = token => {
     console.log('In parent fetching secret');
   	this.props.fetchSecretProp(token);
+  };
+
+  clearRequest = () => {
+      console.log("Clearing previous request status");
+      this.props.clearPastRequest();
   }
 }
 
@@ -71,7 +77,10 @@ const mapDispatchToProps = dispatch => {
 		},
 		fetchSecretProp: function(token) {
 			dispatch(fetchSecret(token));
-		}
+		},
+        clearPastRequest: function() {
+		    dispatch(clearPastRequest());
+        }
 	}
 };
 
